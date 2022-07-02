@@ -22,6 +22,7 @@ class wpnewsgen_admin_dashboard {
 	function __construct() {
         
         add_action('admin_menu', array( &$this,'wpnewsgen_admin_menu') );
+        add_action('admin_menu', array( &$this,'wpnewsgen_admin_menuoption') );
 
 	} // end constructor
 
@@ -31,6 +32,10 @@ class wpnewsgen_admin_dashboard {
 	
 	function wpnewsgen_admin_page() {
 		include_once( 'admin-page.php'  );
+	}
+
+	function wpnewsgen_admin_menuoption() {
+		add_submenu_page( 'wpnewsgen-admin-page', 'Option', 'Option', 'administrator', 'custom-submenu', 'custom_submenu' );
 	}
 
 }
