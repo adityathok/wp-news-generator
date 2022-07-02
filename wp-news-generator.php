@@ -39,10 +39,28 @@ define( 'WP_NEWS_GENERATOR_VERSION', '1.0.0' );
 
 // plugin folder url
 if(!defined('WP_NEWS_GENERATOR_URL')) {
-	define( 'WP_NEWS_GENERATOR_URL',  dirname( __FILE__ ) );
+	define( 'WP_NEWS_GENERATOR_URL',  plugin_dir_url( __FILE__ ) );
 }
 
 /**
  * call another file for the plugin
  */
 require 'inc/wpnewsgen-admin-dashboard.php';
+
+
+/**
+ * Function add scripts ans syles for dashboard
+ */
+if ( ! function_exists( 'wpnewsgen_admin_enqueue_scripts' ) ) {
+	function wpnewsgen_admin_enqueue_scripts($hook) {	
+	
+		$page = isset( $_GET['page'] ) ? sanitize_text_field( wp_unslash( $_GET['page'] ) ) : '';
+		if ( 'wpnewsgen-admin-page' != $page ) {
+			return;
+		}
+
+		wp_enqueue_script( 'wpnewsgen-admin-scripts', WP_NEWS_GENERATOR_URL.'js/admin-script.js', array( 'jquery') );
+	}
+}
+
+add_action( 'admin_enqueue_scripts', 'wpnewsgen_admin_enqueue_scripts' );
