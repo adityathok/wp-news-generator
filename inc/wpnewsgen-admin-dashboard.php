@@ -35,7 +35,11 @@ class wpnewsgen_admin_dashboard {
 	}
 
 	function wpnewsgen_admin_menuoption() {
-		add_submenu_page( 'wpnewsgen-admin-page', 'Option', 'Option', 'administrator', 'custom-submenu', 'custom_submenu' );
+		add_submenu_page( 'wpnewsgen-admin-page', 'Settings', 'Settings', 'administrator', 'wpnewsgen-admin-setting-page', array( &$this,'wpnewsgen_admin_setting_page') );
+	}
+
+	function wpnewsgen_admin_setting_page() {
+		include_once( 'admin-setting-page.php'  );
 	}
 
 }
