@@ -59,7 +59,7 @@ if ( ! function_exists( 'wpnewsgen_admin_enqueue_scripts' ) ) {
 			return;
 		}
 
-		wp_enqueue_script( 'wpnewsgen-admin-scripts', WP_NEWS_GENERATOR_URL.'js/admin-script.js', array( 'jquery') );
+		wp_enqueue_script( 'wpnewsgen-admin-scripts', WP_NEWS_GENERATOR_URL.'js/admin-script.js', array( 'jquery'), WP_NEWS_GENERATOR_VERSION );
 	}
 }
 

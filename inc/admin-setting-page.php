@@ -9,7 +9,7 @@ $apikey     = isset($dataoption['apikey'])?$dataoption['apikey']:'';
 ?>
 
 <div class="wrap">
-    <h2>WP News Generator</h2>
+    <h2>WP News Generator Settings</h2>
 
     <form action="" method="post">
         <?php wp_nonce_field( 'wpnewsgen_admin_action', 'wpnewsgen_admin_action' ); ?>

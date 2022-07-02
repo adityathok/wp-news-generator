@@ -1,8 +1,4 @@
 <?php
-// if input
-if ( isset( $_POST['wpnewsgen_admin_action'] ) && wp_verify_nonce( $_POST['wpnewsgen_admin_action'], 'wpnewsgen_admin_action' ) ) {
-    if (FALSE === get_option('wpnewsgen') && FALSE === update_option('wpnewsgen',FALSE)) add_option('wpnewsgen',$_POST['wpnewsgen']);
-}
 //get data from option [wpnewsgen]
 $dataoption = get_option('wpnewsgen');
 $apikey     = isset($dataoption['apikey'])?$dataoption['apikey']:'';
@@ -11,21 +7,39 @@ $apikey     = isset($dataoption['apikey'])?$dataoption['apikey']:'';
 <div class="wrap">
     <h2>WP News Generator</h2>
 
-    <form action="" method="post">
-        <?php wp_nonce_field( 'wpnewsgen_admin_action', 'wpnewsgen_admin_action' ); ?>
-        <table class="form-table" role="presentation">
-            <tbody>
-                <tr>
-                    <th>API KEY newsapi.org</th>
-                    <td>
-                        <input type="text" value="<?php echo $apikey;?>" name="wpnewsgen[apikey]" id="apikey" class="regular-text">
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <p class="submit">
-            <input type="submit" value="Save Changes" id="submit" class="button button-primary">
-        </p>
-    </form>
+    <div class="wpnewsgen-config-js">
+        <input type="hidden" name="apikey" value="<?php echo $apikey;?>">
+    </div>
+
+    <div class="wpnewsgen-main">
+        <div class="wpnewsgen-loadnews-main">
+            <table class="form-table" role="presentation">
+                <tbody>
+                    <tr>
+                        <th>API KEY newsapi.org</th>
+                        <td>
+                            <input type="text" value="<?php echo $apikey;?>" name="apikey" id="apikey" class="regular-text">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Code Country</th>
+                        <td>
+                            <input type="text" value="id" name="country" id="country" class="regular-text">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Count Page</th>
+                        <td>
+                            <input type="number" step="1" value="10" min="1" max="1000" name="page" id="page" class="small-text">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <br><br>
+            <div class="button button-primary wpnewsgen-run">Load News</div>
+        </div>
+        <div class="wpnewsgen-resultnews-main">
+        </div>
+    </div>
 
 </div>
