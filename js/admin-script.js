@@ -1,6 +1,11 @@
 (function( $ ) {
 	jQuery(document).ready(function($) {
         
+        $(document).on('click','.icon-toggle',function(){
+            var node = $(this).data('node');
+            $('.wpnewsgen-card-post[data-node="'+node+'"]').toggleClass('open');
+        });
+
         function getDataNews(){   
             var today           = new Date();            
             var date            = today.getFullYear()+''+today.getMonth();       
@@ -30,7 +35,22 @@
         
         $('.wpnewsgen-run').click(function(){
             var dataNews = getDataNews();
-            console.log( JSON.parse(dataNews));
+            if(dataNews){
+                var dataN = JSON.parse(dataNews);
+                var articles = dataN.articles;
+                articles.forEach(function (article, index) {
+                    var node = Math.floor(Math.random() * 9999999) + 3;
+                    var content = article.content+' Source="'+article.url+'"';
+                    var cardpost = $('.wpnewsgen-layout-default').clone().removeClass('wpnewsgen-layout-default').attr('data-node',node);
+                    cardpost.find('.icon-toggle').attr('data-node',node);
+                    cardpost.find('.post-title').text(article.title);
+                    cardpost.find('input[name="post_title"]').text(article.title);
+                    cardpost.find('input[name="url_post_image"]').text(article.urlToImage);
+                    cardpost.find('textarea[name="post_content"]').text(content);
+
+                    cardpost.appendTo('.wpnewsgen-layout-datanews');
+                });
+            }
         });
     });
 })( jQuery );

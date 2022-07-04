@@ -1,0 +1,35 @@
+.wpnewsgen-card-post {
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: 0.25rem;
+}
+.wpnewsgen-card-post .card-title {
+    padding: 0.5rem 1rem;
+    margin-bottom: 0;
+    background-color: rgba(0,0,0,.03);
+    border-bottom: 1px solid rgba(0,0,0,.125);
+    font-size: 1rem;
+}
+.wpnewsgen-card-post .card-title .icon-toggle {
+    float: right;
+    padding: 0 0.5rem;
+    cursor: pointer;
+}
+.wpnewsgen-card-post .card-body {
+    padding: 1rem 1rem;
+}
+.wpnewsgen-card-post:not(.open) .card-body { 
+    display: none;
+}
+.wpnewsgen-card-post .form-field-col {
+    margin-bottom: 1rem;
+}
+.wpnewsgen-card-post .form-field-label {
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    display: block;
+}
+.wpnewsgen-layout-default { 
+    display: none;
+}
