@@ -27,12 +27,6 @@ $apikey     = isset($dataoption['apikey'])?$dataoption['apikey']:'';
                             <input type="text" value="id" name="country" id="country" class="regular-text">
                         </td>
                     </tr>
-                    <tr>
-                        <th>Count Page</th>
-                        <td>
-                            <input type="number" step="1" value="10" min="1" max="1000" name="page" id="page" class="small-text">
-                        </td>
-                    </tr>
                 </tbody>
             </table>
             <br><br>
